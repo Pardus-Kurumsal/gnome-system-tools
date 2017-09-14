@@ -1,0 +1,25 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: _fix_services_admin_window
+
+---
+ interfaces/services.ui | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/interfaces/services.ui b/interfaces/services.ui
+index 3d78e0f..da4b85f 100644
+--- a/interfaces/services.ui
++++ b/interfaces/services.ui
+@@ -28,10 +28,10 @@
+             <property name="hscrollbar_policy">never</property>
+             <property name="vscrollbar_policy">automatic</property>
+             <property name="shadow_type">in</property>
++            <property name="width_request">400</property>
++            <property name="height_request">500</property>
+             <child>
+               <object class="GtkTreeView" id="services_list">
+-                <property name="width_request">400</property>
+-                <property name="height_request">300</property>
+                 <property name="visible">True</property>
+                 <property name="can_focus">True</property>
+                 <property name="headers_visible">False</property>

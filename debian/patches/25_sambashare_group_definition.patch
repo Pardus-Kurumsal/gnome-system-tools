@@ -1,0 +1,20 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: _sambashare_group_definition
+
+---
+ src/users/privileges-table.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/users/privileges-table.c b/src/users/privileges-table.c
+index 056c13d..b21a270 100644
+--- a/src/users/privileges-table.c
++++ b/src/users/privileges-table.c
+@@ -67,6 +67,7 @@ static const PrivilegeDescription descriptions[] = {
+ 	{ "plugdev", N_("Access external storage devices automatically") },
+ 	{ "powerdev", N_("Suspend and hibernate the computer") },
+ 	{ "proc", N_("Access /proc filesystem") },
++	{ "sambashare", N_("Share files with the local network") },
+ 	{ "scanner", N_("Use scanners") },
+ 	{ "tape", N_("Use tape drives") },
+ 	{ "usb", N_("Use USB devices") },

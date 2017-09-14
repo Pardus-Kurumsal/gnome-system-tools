@@ -1,0 +1,46 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: _fix_exit
+
+=== modified file 'src/users/users-tool.c'
+---
+ src/users/users-tool.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/users/users-tool.c b/src/users/users-tool.c
+index 62162fa..208823c 100644
+--- a/src/users/users-tool.c
++++ b/src/users/users-tool.c
+@@ -114,17 +114,18 @@ gst_users_tool_finalize (GObject *object)
+ {
+ 	GstUsersTool *tool = GST_USERS_TOOL (object);
+ 
+-	g_object_unref (tool->users_config);
+-	g_object_unref (tool->self_config);
+-	g_object_unref (tool->groups_config);
+-	g_object_unref (tool->profiles);
+-	g_object_unref (tool->settings);
+-
+ 	/* Clear models to unreference OobsUsers and OobsGroups
+ 	 * to be sure they are finalized properly (passwords...) */
+ 	users_table_clear ();
+ 	groups_table_clear ();
+ 
++	g_object_unref (tool->users_config);
++	g_object_unref (tool->groups_config);
++	g_object_unref (tool->self_config);
++
++	g_object_unref (tool->profiles);
++	g_object_unref (tool->settings);
++
+ 	(* G_OBJECT_CLASS (gst_users_tool_parent_class)->finalize) (object);
+ }
+ 
+@@ -182,7 +183,6 @@ update_groups (GstUsersTool *tool)
+ 		/* update privileges table too */
+ 		privileges_table_add_group (OOBS_GROUP (group));
+ 
+-		g_object_unref (group);
+ 		valid = oobs_list_iter_next (list, &iter);
+ 	}
+ 

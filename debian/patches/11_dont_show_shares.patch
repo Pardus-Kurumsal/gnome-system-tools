@@ -1,0 +1,18 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: _dont_show_shares
+
+---
+ src/shares/shares.desktop.in.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/shares/shares.desktop.in.in b/src/shares/shares.desktop.in.in
+index f7ae178..a8989d3 100644
+--- a/src/shares/shares.desktop.in.in
++++ b/src/shares/shares.desktop.in.in
+@@ -12,4 +12,5 @@ X-GNOME-Bugzilla-Product=gnome-system-tools
+ X-GNOME-Bugzilla-Component=shares-admin
+ X-GNOME-Bugzilla-Version=@VERSION@
+ StartupNotify=true
++NoDisplay=true
+ 

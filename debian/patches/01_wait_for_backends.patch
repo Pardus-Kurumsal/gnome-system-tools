@@ -1,0 +1,34 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: _wait_for_backends
+
+===================================================================
+---
+ src/common/gst-tool.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/common/gst-tool.c b/src/common/gst-tool.c
+index f80114d..7fbad60 100644
+--- a/src/common/gst-tool.c
++++ b/src/common/gst-tool.c
+@@ -221,6 +221,7 @@ gst_tool_constructor (GType                  type,
+ 	gchar *widget_name;
+ 	GtkWidget *dialog;
+ 	OobsResult result;
++	int i;
+ 
+ 	object = (* G_OBJECT_CLASS (gst_tool_parent_class)->constructor) (type,
+ 									  n_construct_properties,
+@@ -241,6 +242,12 @@ gst_tool_constructor (GType                  type,
+ 		g_free (widget_name);
+ 	}
+ 
++	for (i=0; i<12; i++) { /* Loop for 3 seconds waiting for the backends to start */
++		if (oobs_session_get_connected (tool->session))
++			break;
++		g_usleep(250000);
++	}
++
+ 	result = oobs_session_get_platform (tool->session, NULL);
+ 	if (result == OOBS_RESULT_NO_PLATFORM) {
+ 		dialog = gst_platform_dialog_new (tool->session);

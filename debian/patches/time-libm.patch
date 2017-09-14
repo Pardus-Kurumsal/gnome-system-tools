@@ -1,0 +1,21 @@
+From: Andreas Henriksson <andreas@fatal.se>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: using floor should link with libm
+
+---
+ src/time/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/time/Makefile.am b/src/time/Makefile.am
+index aca9d77..06b31e2 100644
+--- a/src/time/Makefile.am
++++ b/src/time/Makefile.am
+@@ -15,7 +15,7 @@ INCLUDES += $(GST_TOOL_CFLAGS) $(DBUS_CFLAGS)
+ CLEANFILES = $(GST_TOOL_CLEANFILES)
+ EXTRA_DIST = $(GST_TOOL_EXTRA_DIST)
+ 
+-time_admin_LDADD = ./e-map/libemap.a $(GST_TOOL_LIBS) $(DBUS_LIBS)
++time_admin_LDADD = ./e-map/libemap.a $(GST_TOOL_LIBS) $(DBUS_LIBS) -lm
+ time_admin_DEPENDENCIES = ./e-map/libemap.a $(GST_TOOL_DEPENDENCIES)
+ time_admin_SOURCES = \
+ 	time-tool.c	time-tool.h \

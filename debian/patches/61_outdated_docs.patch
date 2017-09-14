@@ -1,0 +1,34 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: _outdated_docs
+
+===================================================================
+---
+ doc/services/Makefile.am | 3 ---
+ doc/time/Makefile.am     | 3 ---
+ 2 files changed, 6 deletions(-)
+
+diff --git a/doc/services/Makefile.am b/doc/services/Makefile.am
+index c79363c..f91e819 100644
+--- a/doc/services/Makefile.am
++++ b/doc/services/Makefile.am
+@@ -9,7 +9,4 @@ DOC_FIGURES = \
+ 
+ DOC_LINGUAS = ca cs de el en_GB es fr gl oc pl pt_BR sl sv it zh_CN
+ 
+-# this isn't still ported to gnome-doc-utils
+-SUBDIRS = nl 
+-
+ -include $(top_srcdir)/git.mk
+diff --git a/doc/time/Makefile.am b/doc/time/Makefile.am
+index 3ef8d24..e281162 100644
+--- a/doc/time/Makefile.am
++++ b/doc/time/Makefile.am
+@@ -12,7 +12,4 @@ DOC_FIGURES = \
+ 
+ DOC_LINGUAS = ca cs de el en_GB es fr gl it oc pt_BR ru sl sv zh_CN
+ 
+-# This isn't still ported to gnome-doc-utils
+-SUBDIRS = nl
+-
+ -include $(top_srcdir)/git.mk

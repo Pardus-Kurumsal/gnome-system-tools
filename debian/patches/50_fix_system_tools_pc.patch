@@ -1,0 +1,22 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: _fix_system_tools_pc
+
+---
+ gnome-system-tools.pc.in | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/gnome-system-tools.pc.in b/gnome-system-tools.pc.in
+index 6f783b2..e8456f9 100644
+--- a/gnome-system-tools.pc.in
++++ b/gnome-system-tools.pc.in
+@@ -3,9 +3,6 @@ exec_prefix=
+ libdir=
+ includedir=
+ 
+-pixmapsdir=@pixmapsdir@
+-backenddir=@scriptsdir@
+-
+ Name: gst
+ Description: Gnome System Tools
+ Version: @VERSION@

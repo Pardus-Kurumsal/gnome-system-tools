@@ -1,0 +1,23 @@
+From: Vlad Orlov <monsta@inbox.ru>
+Date: Tue, 23 Sep 2014 11:18:06 +0400
+Subject: don't ignore liboobs' result in a callback function
+
+---
+ src/common/gst-tool.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/common/gst-tool.c b/src/common/gst-tool.c
+index 7fbad60..1a5de8a 100644
+--- a/src/common/gst-tool.c
++++ b/src/common/gst-tool.c
+@@ -584,6 +584,10 @@ update_async_func (OobsObject *object,
+ 		gst_tool_update_config (tool);
+ 		gst_tool_update_gui (tool);
+ 	}
++
++	if (result != OOBS_RESULT_OK) {
++		show_oobs_error_dialog (tool, OPERATION_UPDATE, result);
++	}
+ }
+ 
+ void

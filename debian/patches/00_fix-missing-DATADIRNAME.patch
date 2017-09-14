@@ -1,0 +1,21 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Thu, 14 Sep 2017 14:25:15 +0300
+Subject: _fix-missing-DATADIRNAME
+
+---
+ configure.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.in b/configure.in
+index 9d6fa61..96c2f45 100644
+--- a/configure.in
++++ b/configure.in
+@@ -115,6 +115,8 @@ AC_SUBST(POLKIT_LIBS)
+ AC_SUBST(POLKIT_CFLAGS)
+ AM_CONDITIONAL(HAVE_POLKIT, test x$have_polkit = xyes)
+ 
++test -n "$DATADIRNAME" || DATADIRNAME=share
++AC_SUBST(DATADIRNAME)
+ 
+ dnl =====================================================
+ dnl END: Check for Module versions
