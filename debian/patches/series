@@ -13,3 +13,4 @@ time-libm.patch
 50_fix_system_tools_pc.patch
 30_fix_services_admin_window.patch
 00_fix-missing-DATADIRNAME.patch
+0016-Update-Turkish-translation.patch

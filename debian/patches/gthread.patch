@@ -1,9 +1,16 @@
 From: Andreas Henriksson <andreas@fatal.se>
+Date: Tue, 17 Jul 2018 13:47:19 +0300
 Subject: add gthread to linker flags
 
---- gnome-system-tools-3.0.0.orig/configure.in
-+++ gnome-system-tools-3.0.0/configure.in
-@@ -79,6 +79,7 @@ dnl ====================================
+---
+ configure.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.in b/configure.in
+index 3c4278b..9d6fa61 100644
+--- a/configure.in
++++ b/configure.in
+@@ -79,6 +79,7 @@ dnl =====================================================
  PKG_CHECK_MODULES(GST_DEPENDS,[
  			   gtk+-3.0 >= $GTK_REQUIRED
  			   gmodule-export-2.0

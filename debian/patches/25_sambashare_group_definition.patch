@@ -1,13 +1,16 @@
-Description: Add sambashare to known groups
-Author: ?
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Tue, 17 Jul 2018 13:47:19 +0300
+Subject: _sambashare_group_definition
 
 ---
- src/users/privileges-table.c |    1 +
+ src/users/privileges-table.c | 1 +
  1 file changed, 1 insertion(+)
 
+diff --git a/src/users/privileges-table.c b/src/users/privileges-table.c
+index 056c13d..b21a270 100644
 --- a/src/users/privileges-table.c
 +++ b/src/users/privileges-table.c
-@@ -67,6 +67,7 @@ static const PrivilegeDescription descri
+@@ -67,6 +67,7 @@ static const PrivilegeDescription descriptions[] = {
  	{ "plugdev", N_("Access external storage devices automatically") },
  	{ "powerdev", N_("Suspend and hibernate the computer") },
  	{ "proc", N_("Access /proc filesystem") },

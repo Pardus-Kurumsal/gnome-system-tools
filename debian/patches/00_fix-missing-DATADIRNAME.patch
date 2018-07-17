@@ -1,6 +1,16 @@
---- a/configure.in	2016-04-22 00:23:01.000000000 +0300
-+++ b/configure.in	2017-03-23 23:55:57.922849721 +0200
-@@ -114,6 +114,8 @@
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Tue, 17 Jul 2018 13:47:19 +0300
+Subject: _fix-missing-DATADIRNAME
+
+---
+ configure.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.in b/configure.in
+index 9d6fa61..96c2f45 100644
+--- a/configure.in
++++ b/configure.in
+@@ -115,6 +115,8 @@ AC_SUBST(POLKIT_LIBS)
  AC_SUBST(POLKIT_CFLAGS)
  AM_CONDITIONAL(HAVE_POLKIT, test x$have_polkit = xyes)
  

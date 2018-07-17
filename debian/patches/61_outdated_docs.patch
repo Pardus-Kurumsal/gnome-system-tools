@@ -1,8 +1,18 @@
-Index: gnome-system-tools-3.0.0/doc/services/Makefile.am
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Tue, 17 Jul 2018 13:47:19 +0300
+Subject: _outdated_docs
+
 ===================================================================
---- gnome-system-tools-3.0.0.orig/doc/services/Makefile.am	2010-12-12 13:16:01.000000000 +0100
-+++ gnome-system-tools-3.0.0/doc/services/Makefile.am	2011-10-22 18:34:38.094104015 +0200
-@@ -9,7 +9,4 @@
+---
+ doc/services/Makefile.am | 3 ---
+ doc/time/Makefile.am     | 3 ---
+ 2 files changed, 6 deletions(-)
+
+diff --git a/doc/services/Makefile.am b/doc/services/Makefile.am
+index c79363c..f91e819 100644
+--- a/doc/services/Makefile.am
++++ b/doc/services/Makefile.am
+@@ -9,7 +9,4 @@ DOC_FIGURES = \
  
  DOC_LINGUAS = ca cs de el en_GB es fr gl oc pl pt_BR sl sv it zh_CN
  
@@ -10,11 +20,11 @@ Index: gnome-system-tools-3.0.0/doc/services/Makefile.am
 -SUBDIRS = nl 
 -
  -include $(top_srcdir)/git.mk
-Index: gnome-system-tools-3.0.0/doc/time/Makefile.am
-===================================================================
---- gnome-system-tools-3.0.0.orig/doc/time/Makefile.am	2010-12-12 13:16:01.000000000 +0100
-+++ gnome-system-tools-3.0.0/doc/time/Makefile.am	2011-10-22 18:34:38.094104015 +0200
-@@ -12,7 +12,4 @@
+diff --git a/doc/time/Makefile.am b/doc/time/Makefile.am
+index 3ef8d24..e281162 100644
+--- a/doc/time/Makefile.am
++++ b/doc/time/Makefile.am
+@@ -12,7 +12,4 @@ DOC_FIGURES = \
  
  DOC_LINGUAS = ca cs de el en_GB es fr gl it oc pt_BR ru sl sv zh_CN
  

@@ -1,10 +1,13 @@
-Description: GtkScrolledWindow does not fill the place inside of GtkVBox
- and therefore its size is determined by minimum size of the scrollbar.
- As a workaround this patch sets size request for GtkScrolledWindow instead
- of it's immediate child.
-Author: Andriy Grytsenko <andrej@rep.kiev.ua>
-Bug-Debian: https://bugs.debian.org/754306
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Tue, 17 Jul 2018 13:47:19 +0300
+Subject: _fix_services_admin_window
 
+---
+ interfaces/services.ui | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/interfaces/services.ui b/interfaces/services.ui
+index 3d78e0f..da4b85f 100644
 --- a/interfaces/services.ui
 +++ b/interfaces/services.ui
 @@ -28,10 +28,10 @@

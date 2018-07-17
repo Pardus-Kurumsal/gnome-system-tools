@@ -1,7 +1,51 @@
-Index: gnome-system-tools-3.0.0/interfaces/network.ui
+From: Andriy Grytsenko <andrej@rep.kiev.ua>
+Date: Tue, 17 Jul 2018 13:47:18 +0300
+Subject: _disable_interfaces
+
 ===================================================================
---- gnome-system-tools-3.0.0.orig/interfaces/network.ui	2011-10-22 19:42:20.567031813 +0200
-+++ gnome-system-tools-3.0.0/interfaces/network.ui	2011-10-22 19:42:47.846688861 +0200
+---
+ configure.in               |  17 ---
+ interfaces/network.ui      | 137 ------------------
+ src/network/Makefile.am    |  11 +-
+ src/network/callbacks.c    | 341 ---------------------------------------------
+ src/network/callbacks.h    |  21 ---
+ src/network/main.c         | 106 +-------------
+ src/network/network-tool.c |  66 ---------
+ src/network/network-tool.h |   9 +-
+ 8 files changed, 4 insertions(+), 704 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index a1be84e..6335ed3 100644
+--- a/configure.in
++++ b/configure.in
+@@ -251,23 +251,6 @@ dnl ==================================
+ dnl END: GST_LIBS & GST_FLAGS
+ dnl ==================================
+ 
+-dnl ==================================
+-dnl LIBIW DETECTION
+-dnl ==================================
+-
+-GST_IW_LIBS=
+-AC_CHECK_HEADER(iwlib.h, [
+-  enable_libiw=yes
+-  AC_DEFINE(HAVE_LIBIW_H, "", [whether libiw is available])
+-  AC_HAVE_LIBRARY(iw, [GST_IW_LIBS="-liw"])
+-])
+-AM_CONDITIONAL(HAVE_LIBIW_H, test x$enable_libiw = xyes)
+-AC_SUBST(GST_IW_LIBS)
+-
+-dnl ==================================
+-dnl END: LIBIW DETECTION
+-dnl ==================================
+-
+ dnl ===========================
+ dnl NAUTILUS EXTENSION
+ dnl ===========================
+diff --git a/interfaces/network.ui b/interfaces/network.ui
+index 26a76f7..4bc86b1 100644
+--- a/interfaces/network.ui
++++ b/interfaces/network.ui
 @@ -86,147 +86,10 @@
          <property name="border_width">6</property>
          <property name="spacing">12</property>
@@ -150,39 +194,11 @@ Index: gnome-system-tools-3.0.0/interfaces/network.ui
                <object class="GtkFrame" id="frame3">
                  <property name="visible">True</property>
                  <property name="border_width">12</property>
-Index: gnome-system-tools-3.0.0/configure.in
-===================================================================
---- gnome-system-tools-3.0.0.orig/configure.in	2011-10-22 19:42:20.543032116 +0200
-+++ gnome-system-tools-3.0.0/configure.in	2011-10-22 19:42:47.846688861 +0200
-@@ -251,23 +251,6 @@
- dnl END: GST_LIBS & GST_FLAGS
- dnl ==================================
- 
--dnl ==================================
--dnl LIBIW DETECTION
--dnl ==================================
--
--GST_IW_LIBS=
--AC_CHECK_HEADER(iwlib.h, [
--  enable_libiw=yes
--  AC_DEFINE(HAVE_LIBIW_H, "", [whether libiw is available])
--  AC_HAVE_LIBRARY(iw, [GST_IW_LIBS="-liw"])
--])
--AM_CONDITIONAL(HAVE_LIBIW_H, test x$enable_libiw = xyes)
--AC_SUBST(GST_IW_LIBS)
--
--dnl ==================================
--dnl END: LIBIW DETECTION
--dnl ==================================
--
- dnl ===========================
- dnl NAUTILUS EXTENSION
- dnl ===========================
-Index: gnome-system-tools-3.0.0/src/network/Makefile.am
-===================================================================
---- gnome-system-tools-3.0.0.orig/src/network/Makefile.am	2011-10-22 19:42:20.471033021 +0200
-+++ gnome-system-tools-3.0.0/src/network/Makefile.am	2011-10-22 19:42:47.846688861 +0200
-@@ -15,23 +15,14 @@
+diff --git a/src/network/Makefile.am b/src/network/Makefile.am
+index cb9e5fc..f905d78 100644
+--- a/src/network/Makefile.am
++++ b/src/network/Makefile.am
+@@ -15,23 +15,14 @@ INCLUDES += $(GST_TOOL_CFLAGS) $(DBUS_CFLAGS) $(GIO_CFLAGS)
  CLEANFILES = $(GST_TOOL_CLEANFILES)
  EXTRA_DIST = $(GST_TOOL_EXTRA_DIST)
  
@@ -207,10 +223,10 @@ Index: gnome-system-tools-3.0.0/src/network/Makefile.am
  	hosts.c hosts.h				\
  	main.c
  
-Index: gnome-system-tools-3.0.0/src/network/callbacks.c
-===================================================================
---- gnome-system-tools-3.0.0.orig/src/network/callbacks.c	2011-10-22 19:42:20.511032518 +0200
-+++ gnome-system-tools-3.0.0/src/network/callbacks.c	2011-10-22 19:52:22.879459722 +0200
+diff --git a/src/network/callbacks.c b/src/network/callbacks.c
+index a3c91e3..1a2b702 100644
+--- a/src/network/callbacks.c
++++ b/src/network/callbacks.c
 @@ -22,294 +22,11 @@
  
  #include "gst.h"
@@ -506,7 +522,7 @@ Index: gnome-system-tools-3.0.0/src/network/callbacks.c
  
  static void
  do_popup_menu (GtkWidget *table, GstTablePopup *table_popup, GdkEventButton *event)
-@@ -437,64 +154,6 @@
+@@ -437,64 +154,6 @@ on_host_aliases_dialog_changed (GtkWidget *widget, gpointer data)
  }
  
  void
@@ -571,11 +587,11 @@ Index: gnome-system-tools-3.0.0/src/network/callbacks.c
  on_entry_changed (GtkWidget *widget, gpointer data)
  {
    g_object_set_data (G_OBJECT (widget), "content-changed", GINT_TO_POINTER (TRUE));
-Index: gnome-system-tools-3.0.0/src/network/callbacks.h
-===================================================================
---- gnome-system-tools-3.0.0.orig/src/network/callbacks.h	2011-10-22 19:42:20.483032869 +0200
-+++ gnome-system-tools-3.0.0/src/network/callbacks.h	2011-10-22 19:42:47.854688761 +0200
-@@ -30,19 +30,6 @@
+diff --git a/src/network/callbacks.h b/src/network/callbacks.h
+index 85dc4df..a9fa4dc 100644
+--- a/src/network/callbacks.h
++++ b/src/network/callbacks.h
+@@ -30,19 +30,6 @@ struct _GstTablePopup
    GtkWidget *popup;
  };
  
@@ -595,7 +611,7 @@ Index: gnome-system-tools-3.0.0/src/network/callbacks.h
  gboolean on_table_button_press (GtkWidget*, GdkEventButton*, gpointer);
  gboolean on_table_popup_menu   (GtkWidget*, gpointer);
  
-@@ -52,14 +39,6 @@
+@@ -52,14 +39,6 @@ void  on_host_aliases_delete_clicked     (GtkWidget*, gpointer);
  void  on_host_aliases_dialog_changed     (GtkWidget*, gpointer);
  
  
@@ -610,10 +626,10 @@ Index: gnome-system-tools-3.0.0/src/network/callbacks.h
  void     on_entry_changed      (GtkWidget     *widget,
  				gpointer       data);
  gboolean on_hostname_focus_out (GtkWidget     *widget,
-Index: gnome-system-tools-3.0.0/src/network/main.c
-===================================================================
---- gnome-system-tools-3.0.0.orig/src/network/main.c	2011-10-22 19:42:20.491032769 +0200
-+++ gnome-system-tools-3.0.0/src/network/main.c	2011-10-22 19:42:47.854688761 +0200
+diff --git a/src/network/main.c b/src/network/main.c
+index 8d302b4..bc87a73 100644
+--- a/src/network/main.c
++++ b/src/network/main.c
 @@ -27,14 +27,11 @@
  
  #include "gst.h"
@@ -629,7 +645,7 @@ Index: gnome-system-tools-3.0.0/src/network/main.c
    /* general tab */
    { "domain",                       "focus-out-event", G_CALLBACK (on_domain_focus_out) },
    { "hostname",                     "changed", G_CALLBACK (on_entry_changed) },
-@@ -45,37 +42,6 @@
+@@ -45,37 +42,6 @@ static GstDialogSignal signals[] = {
    { "host_aliases_delete",          "clicked", G_CALLBACK (on_host_aliases_delete_clicked) },
    /* host aliases dialog */
    { "host_alias_address",           "changed", G_CALLBACK (on_host_aliases_dialog_changed) },
@@ -667,7 +683,7 @@ Index: gnome-system-tools-3.0.0/src/network/main.c
    { NULL }
  };
  
-@@ -85,11 +51,6 @@
+@@ -85,11 +51,6 @@ static GstDialogSignal signals_after[] = {
  };
  
  static const gchar *policy_widgets [] = {
@@ -679,7 +695,7 @@ Index: gnome-system-tools-3.0.0/src/network/main.c
  	"hostname",
  	"domain",
  	"dns_list",
-@@ -106,58 +67,9 @@
+@@ -106,58 +67,9 @@ static const gchar *policy_widgets [] = {
  };
  
  static void
@@ -738,7 +754,7 @@ Index: gnome-system-tools-3.0.0/src/network/main.c
  }
  
  static void
-@@ -176,17 +88,8 @@
+@@ -176,17 +88,8 @@ set_text_buffers_callback (void)
  int
  main (int argc, gchar *argv[])
  {
@@ -757,7 +773,7 @@ Index: gnome-system-tools-3.0.0/src/network/main.c
    tool = gst_network_tool_new ();
  
    gst_dialog_require_authentication_for_widgets (tool->main_dialog, policy_widgets);
-@@ -195,12 +98,7 @@
+@@ -195,12 +98,7 @@ main (int argc, gchar *argv[])
    set_text_buffers_callback ();
    init_filters ();
  
@@ -771,10 +787,10 @@ Index: gnome-system-tools-3.0.0/src/network/main.c
  
    gtk_main ();
    return 0;
-Index: gnome-system-tools-3.0.0/src/network/network-tool.c
-===================================================================
---- gnome-system-tools-3.0.0.orig/src/network/network-tool.c	2011-10-22 19:42:20.455033222 +0200
-+++ gnome-system-tools-3.0.0/src/network/network-tool.c	2011-10-22 19:42:47.854688761 +0200
+diff --git a/src/network/network-tool.c b/src/network/network-tool.c
+index 2a7a9f2..f93c8b3 100644
+--- a/src/network/network-tool.c
++++ b/src/network/network-tool.c
 @@ -22,11 +22,8 @@
  #include <glib/gi18n.h>
  #include "gst.h"
@@ -787,7 +803,7 @@ Index: gnome-system-tools-3.0.0/src/network/network-tool.c
  
  static void gst_network_tool_class_init (GstNetworkToolClass *class);
  static void gst_network_tool_init       (GstNetworkTool      *tool);
-@@ -57,13 +54,8 @@
+@@ -57,13 +54,8 @@ gst_network_tool_init (GstNetworkTool *tool)
  {
    tool->hosts_config = OOBS_HOSTS_CONFIG (oobs_hosts_config_get ());
    gst_tool_add_configuration_object (GST_TOOL (tool), OOBS_OBJECT (tool->hosts_config), TRUE);
@@ -801,7 +817,7 @@ Index: gnome-system-tools-3.0.0/src/network/network-tool.c
  }
  
  static void
-@@ -77,9 +69,6 @@
+@@ -77,9 +69,6 @@ gst_network_tool_finalize (GObject *object)
  
    g_object_unref (tool->dns);
    g_object_unref (tool->search);
@@ -811,7 +827,7 @@ Index: gnome-system-tools-3.0.0/src/network/network-tool.c
  
    (* G_OBJECT_CLASS (gst_network_tool_parent_class)->finalize) (object);
  }
-@@ -140,16 +129,8 @@
+@@ -140,16 +129,8 @@ gst_network_tool_constructor (GType                  type,
    widget = gst_dialog_get_widget (GST_TOOL (tool)->main_dialog, "domain");
    tool->domain = GTK_ENTRY (widget);
  
@@ -828,7 +844,7 @@ Index: gnome-system-tools-3.0.0/src/network/network-tool.c
    tool->host_aliases_dialog = gst_dialog_get_widget (GST_TOOL (tool)->main_dialog, "host_aliases_edit_dialog");
  
    return object;
-@@ -189,48 +170,6 @@
+@@ -189,48 +170,6 @@ update_hosts_list (OobsList *list)
  }
  
  static void
@@ -877,7 +893,7 @@ Index: gnome-system-tools-3.0.0/src/network/network-tool.c
  set_entry_text (GtkWidget *entry, const gchar *text)
  {
    gtk_entry_set_text (GTK_ENTRY (entry), (text) ? text : "");
-@@ -265,11 +204,6 @@
+@@ -265,11 +204,6 @@ gst_network_tool_update_gui (GstTool *tool)
    set_entry_text (GTK_WIDGET (network_tool->domain),
  		  oobs_hosts_config_get_domainname (network_tool->hosts_config));
    g_signal_handlers_unblock_by_func (network_tool->domain, on_entry_changed, tool->main_dialog);
@@ -889,11 +905,11 @@ Index: gnome-system-tools-3.0.0/src/network/network-tool.c
  }
  
  GstTool*
-Index: gnome-system-tools-3.0.0/src/network/network-tool.h
-===================================================================
---- gnome-system-tools-3.0.0.orig/src/network/network-tool.h	2011-10-22 19:42:20.531032266 +0200
-+++ gnome-system-tools-3.0.0/src/network/network-tool.h	2011-10-22 19:42:47.854688761 +0200
-@@ -26,8 +26,7 @@
+diff --git a/src/network/network-tool.h b/src/network/network-tool.h
+index e1780b5..4ced717 100644
+--- a/src/network/network-tool.h
++++ b/src/network/network-tool.h
+@@ -26,8 +26,7 @@ G_BEGIN_DECLS
  #include <gtk/gtk.h>
  #include <dbus/dbus.h>
  #include "address-list.h"
@@ -903,7 +919,7 @@ Index: gnome-system-tools-3.0.0/src/network/network-tool.h
  
  #define GST_TYPE_NETWORK_TOOL           (gst_network_tool_get_type ())
  #define GST_NETWORK_TOOL(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), GST_TYPE_NETWORK_TOOL, GstNetworkTool))
-@@ -45,7 +44,6 @@
+@@ -45,7 +44,6 @@ struct _GstNetworkTool
  
    /* config */
    OobsHostsConfig *hosts_config;
@@ -911,7 +927,7 @@ Index: gnome-system-tools-3.0.0/src/network/network-tool.h
  
    /* gui */
    GstAddressList *dns;
-@@ -54,16 +52,11 @@
+@@ -54,16 +52,11 @@ struct _GstNetworkTool
    /* bus, used for NM integration */
    DBusConnection *bus_connection;
  
